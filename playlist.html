@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Playlist</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="playlist">
+        <h3>Playlist</h3>
+        <ul id="playlist">
+            <li data-index="0">Creed - One Last Breath <button class="play-icon" data-index="0">&#9658;</button></li>
+            <li data-index="1">Aadat Unplugged <button class="play-icon" data-index="1">&#9658;</button></li>
+            <li data-index="2">ACDC - Thunderstruck <button class="play-icon" data-index="2">&#9658;</button></li>
+            <li data-index="3">Guns N Roses-Sweet Child O-Mine <button class="play-icon" data-index="3">&#9658;</button></li>
+        </ul>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const playlist = document.getElementById('playlist');
+            const audioFiles = [
+                { name: 'Creed - One Last Breath', src: 'music/Creed - One Last Breath (Official Video).mp3', image: 'trackimages/creed.jpg' },
+                { name: 'Aadat Unplugged', src: 'music/Aadat Unplugged.mp3', image: 'trackimages/aadat.jpg' },
+                { name: 'ACDC - Thunderstruck', src: 'music/ACDC - Thunderstruck (Live At River Plate, December 2009).mp3', image: 'trackimages/acdc-thunderstruck.jpg' },
+                { name: 'Guns N Roses-Sweet Child O-Mine ', src: 'music/Guns N Roses - Sweet Child O Mine.mp3', image: 'trackimages/sweet-child-o-mine.jpg' },
+            ];
+
+            playlist.addEventListener('click', (event) => {
+                if (event.target.classList.contains('play-icon')) {
+                    const index = parseInt(event.target.getAttribute('data-index'));
+                    const audioPlayer = new Audio(audioFiles[index].src);
+                    audioPlayer.play();
+                }
+            });
+            
+        });
+    </script>
+</body>
+
+</html>
